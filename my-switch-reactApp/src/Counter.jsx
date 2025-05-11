@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 
 function Counter() {
-    const end = new Date('06/05/2025 12:01 AM').getTime();
+    // const end = new Date('06/05/2025 12:01 AM').getTime();
+    const end = new Date().getTime() + 1000 * 10;
 
     const [timeLeft, setTimeLeft] = useState({
         days: '00',
@@ -9,6 +10,8 @@ function Counter() {
         minutes: '00',
         seconds: '00'
     });
+
+    const [isOver, setOver] = useState(false);
 
     const pad = (n) => String(n).padStart(2, '0');
 
@@ -25,7 +28,10 @@ function Counter() {
                     minutes: '00',
                     seconds: '00'
                 });
-                return;
+
+                setOver(true);
+
+                return
             }
 
             const _second = 1000;
@@ -49,12 +55,23 @@ function Counter() {
         return () => clearInterval(interval);
     }, []);
 
+    function Display() {
+        return (
+            isOver ?
+                <h2>
+                    Switch2 in now available!
+                </h2> :
+
+                <h2>
+                    {timeLeft.days}d : {timeLeft.hours}h : {timeLeft.minutes}m : {timeLeft.seconds}
+                </h2>
+        )
+    }
+
     return (
         <div className="container text-center text-white">
             <h1 className="mb-4">Countdown to June 5, 2025</h1>
-            <h2>
-                {timeLeft.days}d : {timeLeft.hours}h : {timeLeft.minutes}m : {timeLeft.seconds}s
-            </h2>
+            <Display/>
         </div>
     );
 }
