@@ -1,8 +1,9 @@
 import {useEffect, useState} from "react";
 
 function Counter() {
-    // const end = new Date('06/05/2025 12:01 AM').getTime();
-    const end = new Date().getTime() + 1000 * 10;
+    const end = new Date('06/05/2025 12:01 AM').getTime();
+    // comment the last line and uncomment the next line for testing
+    // const end = new Date().getTime() + 1000 * 10;
 
     const [timeLeft, setTimeLeft] = useState({
         days: '00',
@@ -60,8 +61,8 @@ function Counter() {
             isOver ?
                 <h2>
                     Switch2 in now available!
-                </h2> :
-
+                </h2>
+                :
                 <h2>
                     {timeLeft.days}d : {timeLeft.hours}h : {timeLeft.minutes}m : {timeLeft.seconds}
                 </h2>
