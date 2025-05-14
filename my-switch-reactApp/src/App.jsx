@@ -10,7 +10,7 @@ function App() {
         <>
             <div className="container text-center text-white">
                 <img className="img-fluid w-50" src={switch2logo} alt="logo"/>
-                <h1 className="mb-5">Counting down:</h1>
+                <h1 className="mb-5">Counting down: </h1>
 
             </div>
             <Counter/>
